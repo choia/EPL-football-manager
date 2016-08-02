@@ -12,7 +12,6 @@ soup = make_soup("http://en.soccerwiki.org/league.php?leagueid=28")
 
 counts = 0
 team_list = []
-team = {}
 team_data = []
 
 for link in soup.find_all("td", {"class": "team left"}):
@@ -21,14 +20,22 @@ for link in soup.find_all("td", {"class": "team left"}):
         counts += 1
         team_list.append(link_text)
 
+# print(team_list) # FOR TESTING
 
-count = [x for x in range(counts) if x % 4 == 0]
+number_of_teams = [x for x in range(counts) if x % 4 == 0]
+# print(len(number_of_teams)) # FOR TESTING
 
-for c in count:
-    team = {team_list[c]: {'coach_name': team_list[c+1], 'stadium_name': team_list[c+2], 'city_name': team_list[c+3]}}
-    team_data.append(team)
+for club_data in number_of_teams:
+    team_info = {
+        team_list[club_data]: {
+            'coach_name': team_list[club_data + 1],
+            'stadium_name': team_list[club_data + 2],
+            'city_name': team_list[club_data + 3]}
+    }
 
-# print(team_data) FOR TESTING
-# print(team_data[1]['Arsenal']['city_name']) FOR TESTING
+    team_data.append(team_info)
+
+print(team_data) # FOR TESTING
+# print(team_data[1]['Arsenal']['city_name']) # FOR TESTING
 
 
