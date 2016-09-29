@@ -55,4 +55,4 @@ for club_number in range(soccer_club.team_count):
         soccer_club.team_data[club_number]['nickname'] = nickname
         soccer_club.team_data[club_number]['year_found'] = year_found
 
-print(soccer_club.team_data)
+# print(soccer_club.team_data) TEST
