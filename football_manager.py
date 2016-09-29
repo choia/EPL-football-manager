@@ -27,13 +27,34 @@ class FootballManager(QWidget):
         club_cbox.setMinimumHeight(22)
         club_cbox.setMaximumWidth(230)
 
-        # Search Button
+        # Search Button NEED TO ADD EVENTS WHEN CLICKED
         search_btn = QPushButton('Search')
         search_btn.setStyleSheet('background-color: rgb(255, 255, 240);' 'border: 2px solid black;' 'font: bold 12px;'
                            'min-width: 5em;' 'padding: 1px;' 'border-style: outset;')
         pressed_stylesheet = "::pressed{Background-color: orange; border-style: inset;}"
         search_btn.setStyleSheet(pressed_stylesheet)
         search_btn.setMaximumWidth(60)
+
+        # Add the label, combobox, and search button to fm_hbox layout
+        fm_hbox = QHBoxLayout()
+        fm_hbox.addWidget(club_label)
+        fm_hbox.addWidget(club_cbox)
+        fm_hbox.addWidget(search_btn)
+
+        # Club Images NEED TO MOVE TO SEARCH EVENT FUNCTION
+        image_label = QLabel()
+        image_label.setStyleSheet('background: white;' 'padding-left: 20px;' 'padding-right: 30px;')
+
+        url = 'http://smimgs.com/images/logos/clubs/31.jpg' #PLACEHOLDER FOR NOW
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        data = urllib.request.urlopen(req).read()
+        img = QImage()
+        img.loadFromData(data)
+        pimg = img.scaled(110, 110, Qt.KeepAspectRatio)
+        image_label.setPixmap(QPixmap(pimg))
+        image_label.setAlignment(Qt.AlignCenter)
+        
+
 
     def run_search(self):
         pass
