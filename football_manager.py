@@ -62,9 +62,64 @@ class FootballManager(QWidget):
         club_label2.setStyleSheet('background: white;' 'padding-top: 20px;' 'padding-right: 5px;' 'font-weight: bold;')
         club_label2.setAlignment(Qt.AlignRight)
 
+        # Display club information # DISPLAY INFO WHEN SEARCHED
+        club_label3 = QLabel()
+        #club_label3.setText(team_name + "\n\n" + nick_name + "\n\n" + year_found + "\n\n" + manager + "\n\n" + location
+        #               + "\n\n" + stadium + "\n\n")
+        #club_label3.setStyleSheet('background: white;' 'padding-top: 20px;' 'padding-right: 50px;')
+        #club_label3.setAlignment(Qt.AlignLeft)
+
+        # Add label widgets to fm_hbox2 layout
+        fm_hbox2 = QHBoxLayout()
+        fm_hbox2.setSpacing(0)
+        fm_hbox2.addWidget(club_label1)
+        fm_hbox2.addWidget(club_label2)
+        fm_hbox2.addWidget(club_label3)
+        fm_hbox2.addStretch(1)
+
+        # Add QTableWidget # NEED  TO DISPLAY DATA WHEN SEARCHED
+        table1 = QTableWidget()
+        table1.setStyleSheet('font-size: 11px;' 'alternate-background-color: rgb(176, 224, 208);'
+                             'background-color: rgb(255, 255, 240);')
+        table1.setAlternatingRowColors(True)  # Alternate row colors
+        table1.setColumnCount(3)
+        table1.setEditTriggers(QAbstractItemView.NoEditTriggers)  # Set the rows in Read Only
+        table_vertical = table1.verticalHeader()
+        table_vertical.setVisible(False)  # Disable vertical column numbers
+        table1_horizontal = table1.horizontalHeader()
+        table1_horizontal.setStretchLastSection(True)  # Stretch and close the gap
+
+        header_name = [
+            'Player Name',
+            'Position',
+            'Age'
+        ]
+        for number_of_row in range(len(data)):
+            table1.setRowHeight(number_of_row, 1)
+
+        # Set rows on table by number of data
+        table1.setRowCount(len(data))
+        # Adding player data into table
+        for number_of_player, key in enumerate(data.keys()):
+            for number_of_data, item in enumerate(data[key]):
+                table1.setItem(number_of_player, number_of_data, QTableWidgetItem(item))
+
+
+        table1.setHorizontalHeaderLabels(header_name)  # Set column name
+        stylesheet = "::section{Background-color:rgb(248,248,255)}"
+        table1.horizontalHeader().setStyleSheet(stylesheet)
+        table1.setColumnWidth(0, 160)  # Set column width
+        table1.resizeRowsToContents()
+
+        # fm_hbox3 layout
+        fm_hbox3 = QHBoxLayout()
+        fm_hbox3.addWidget(table1)
+
         # Overall layout
         fm_vbox = QVBoxLayout()
         fm_vbox.addLayout(fm_hbox1)
+        fm_vbox.addLayout(fm_hbox2)
+        fm_vbox.addLayout(fm_hbox3)
         fm_vbox.setSpacing(5)
         self.setLayout(fm_vbox)
         self.setStyleSheet('background: white;')
