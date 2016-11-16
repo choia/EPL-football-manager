@@ -11,7 +11,7 @@ def make_soup(url):
 
 link_count = 0          # Count total number of texts that was parsed from the team left class
 team_count = 0          # Count total number of clubs when adding data to the team data list
-team_info_list = []     # List with club name, manager, stadium, and city
+team_info_list = []     # List with club name, manager, stadium, and location
 team_url_list = []      # List with club url
 team_logo_list = []     # List with logo url
 team_data = []          # Final list with all of appended club data
@@ -28,7 +28,7 @@ for link in soup.find_all("td", {"class": "team left"}):
 
     # Find all of team logo url(jpg) and append to the team logo list
     for jpg_link in link.find_all('img'):
-        team_logo_list.append(jpg_link['src'])
+        team_logo_list.append('http:' + jpg_link['src'])
 
     # Find all of club urls and append to the team url list
     for url_link in link.find_all('a'):
@@ -46,9 +46,9 @@ number_of_teams = [x for x in range(link_count) if x % 4 == 0]
 for club_data in number_of_teams:
     team_info = {
             'team_name': team_info_list[club_data],
-            'coach_name': team_info_list[club_data + 1],
-            'stadium_name': team_info_list[club_data + 2],
-            'city_name': team_info_list[club_data + 3],
+            'manager': team_info_list[club_data + 1],
+            'stadium': team_info_list[club_data + 2],
+            'location': team_info_list[club_data + 3],
             'club_url': team_url_list[team_count],
             'logo_url': team_logo_list[team_count]
     }
@@ -57,3 +57,4 @@ for club_data in number_of_teams:
 
 
 
+#print(team_data)
