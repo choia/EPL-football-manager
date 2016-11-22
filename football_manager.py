@@ -33,7 +33,7 @@ class FootballManager(QWidget):
         for cbox_item in range(soccer_club.team_count):
             self.club_cbox.addItem(soccer_club.team_data[cbox_item]['team_name'])
 
-        # Search Button NEED TO ADD EVENTS WHEN CLICKED
+        # Search Button
         search_btn = QPushButton('Search')
         search_btn.setStyleSheet('background-color: rgb(255, 255, 240);' 'border: 2px solid black;' 'font: bold 12px;'
                                  'min-width: 5em;' 'padding: 1px;' 'border-style: outset;')
@@ -48,7 +48,7 @@ class FootballManager(QWidget):
         fm_hbox1.addWidget(self.club_cbox)
         fm_hbox1.addWidget(search_btn)
 
-        # Club Images # WILL NEED TO PUT THIS INTO A FUNCTION
+        # Club Images
         self.image_label = QLabel()
         self.image_label.setStyleSheet('background: white;' 'padding-left: 20px;' 'padding-right: 40px;')
         url = soccer_club.team_data[initial_index]['logo_url']
@@ -65,7 +65,7 @@ class FootballManager(QWidget):
         club_label2.setStyleSheet('background: white;' 'padding-top: 20px;' 'padding-right: 5px;' 'font-weight: bold;')
         club_label2.setAlignment(Qt.AlignRight)
 
-        # Display club information # WILL NEED TO PUT THIS INTO A FUNCTION
+        # Display club information
         self.club_label3 = QLabel()
         self.club_label3.setText(soccer_club.team_data[initial_index]['team_name'] + "\n\n" +
                                  soccer_club.team_data[initial_index]['nick_name'] + "\n\n" +
@@ -85,7 +85,7 @@ class FootballManager(QWidget):
         fm_hbox2.addWidget(self.club_label3)
         fm_hbox2.addStretch(1)
 
-        # Add QTableWidget # WILL NEED TO PUT THIS INTO A FUNCTION
+        # Add QTableWidget
         self.table1 = QTableWidget()
         self.table1.setStyleSheet('font-size: 11px;' 'alternate-background-color: rgb(176, 224, 208);'
                              'background-color: rgb(255, 255, 240);')
