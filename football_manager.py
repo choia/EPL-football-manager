@@ -16,7 +16,7 @@ class FootballManager(QWidget):
 
     def init_ui(self):
         '''Initial UI'''
-        initial_index = 0
+        initial_index = 0   # Variable used for default team
 
         # Label 'Clubs'
         club_label1 = QLabel('Clubs:')
@@ -127,6 +127,7 @@ class FootballManager(QWidget):
         fm_vbox.addLayout(fm_hbox2)
         fm_vbox.addLayout(fm_hbox3)
         fm_vbox.setSpacing(5)
+        self.setWindowTitle('EPL Football Manager 1.0')
         self.setLayout(fm_vbox)
         self.setStyleSheet('background: white;')
         self.center_window()
