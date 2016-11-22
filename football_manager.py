@@ -102,12 +102,6 @@ class FootballManager(QWidget):
             'Position'
         ]
 
-        # Set number_of_rows for the table
-        #for number_of_row in range(len(soccer_club.team_data[initial_index]['players'])):
-        #    self.table1.setRowHeight(number_of_row, 1)
-
-        #print(len(soccer_club.team_data[initial_index]['players']))
-
         # Set rows on table by number of data
         self.table1.setRowCount(len(soccer_club.team_data[initial_index]['players']))
 
@@ -115,7 +109,6 @@ class FootballManager(QWidget):
         for number_of_player, key in enumerate(soccer_club.team_data[initial_index]['players'].keys()):
             for number_of_data, item in enumerate(soccer_club.team_data[initial_index]['players'][key]):
                 self.table1.setItem(number_of_player, number_of_data, QTableWidgetItem(item))
-
                 self.table1.setHorizontalHeaderLabels(header_name)  # Set column name
         stylesheet = "::section{Background-color:rgb(248,248,255)}"
         self.table1.horizontalHeader().setStyleSheet(stylesheet)
@@ -139,9 +132,7 @@ class FootballManager(QWidget):
         self.setFixedSize(380, 600)  # Disable resizing widget window
         self.show()
 
-
     def run_search(self):
-        #print(self.club_cbox.currentIndex())
         index = self.club_cbox.currentIndex()
 
         # Update the logo image
@@ -162,14 +153,12 @@ class FootballManager(QWidget):
                                  soccer_club.team_data[index]['stadium'] + "\n\n")
 
         # Populate the table
-        #for number_of_row in range(len(soccer_club.team_data[index]['players'])):
-        #    self.table1.setRowHeight(number_of_row, 1)
-
         self.table1.setRowCount(len(soccer_club.team_data[index]['players']))
 
         for number_of_player, key in enumerate(soccer_club.team_data[index]['players'].keys()):
             for number_of_data, item in enumerate(soccer_club.team_data[index]['players'][key]):
                 self.table1.setItem(number_of_player, number_of_data, QTableWidgetItem(item))
+        self.table1.resizeRowsToContents()
 
     # Center Main Window
     def center_window(self):
