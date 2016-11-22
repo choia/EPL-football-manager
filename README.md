@@ -1,5 +1,5 @@
-# Football Manager
-* Graphical application that represents English Premier League clubs information by webscraping from Football data website.
+# EPL Football Manager
+* Graphical application that represents English Premier League clubs and its players information by webscraping from Football data website.
 
 
 ## Requirements
