@@ -1,2 +1,6 @@
 # Ignoring below files
 *.idea/
+*.git
+*.md
+__pycache__
+images
