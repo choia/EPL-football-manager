@@ -1,9 +1,11 @@
 # Football Manager
+* Graphical application that represents English Premier League clubs information by webscraping from Football data website.
+
 
 ## Requirements
-PyQt5
-Beautifulsoup
-Requests
+- PyQt5
+- Beautifulsoup
+- Requests
 
 
 ## Screenshot
