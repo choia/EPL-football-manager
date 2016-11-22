@@ -54,7 +54,3 @@ for club_data in number_of_teams:
     }
     team_count += 1
     team_data.append(team_info)
-
-
-
-#print(team_data)

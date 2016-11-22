@@ -5,7 +5,7 @@ import urllib.request
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication, QDesktopWidget, QHBoxLayout, QVBoxLayout, QComboBox, \
-    QTableWidget, QTableWidgetItem, QLabel, QPushButton, QAbstractItemView, QGroupBox, QLineEdit
+    QTableWidget, QTableWidgetItem, QLabel, QPushButton, QAbstractItemView
 
 
 class FootballManager(QWidget):
@@ -48,7 +48,7 @@ class FootballManager(QWidget):
         fm_hbox1.addWidget(self.club_cbox)
         fm_hbox1.addWidget(search_btn)
 
-        # Club Images NEED TO MOVE/COPY TO SEARCH EVENT FUNCTION
+        # Club Images # WILL NEED TO PUT THIS INTO A FUNCTION
         self.image_label = QLabel()
         self.image_label.setStyleSheet('background: white;' 'padding-left: 20px;' 'padding-right: 40px;')
         url = soccer_club.team_data[initial_index]['logo_url']
@@ -65,14 +65,15 @@ class FootballManager(QWidget):
         club_label2.setStyleSheet('background: white;' 'padding-top: 20px;' 'padding-right: 5px;' 'font-weight: bold;')
         club_label2.setAlignment(Qt.AlignRight)
 
-        # Display club information # DISPLAY INFO WHEN SEARCHED
+        # Display club information # WILL NEED TO PUT THIS INTO A FUNCTION
         self.club_label3 = QLabel()
         self.club_label3.setText(soccer_club.team_data[initial_index]['team_name'] + "\n\n" +
-                            soccer_club.team_data[initial_index]['nick_name'] + "\n\n" +
-                            soccer_club.team_data[initial_index]['year_found'] + "\n\n" +
-                            soccer_club.team_data[initial_index]['manager'] + "\n\n" +
-                            soccer_club.team_data[initial_index]['location'] + "\n\n" +
-                            soccer_club.team_data[initial_index]['stadium'] + "\n\n")
+                                 soccer_club.team_data[initial_index]['nick_name'] + "\n\n" +
+                                 soccer_club.team_data[initial_index]['year_found'] + "\n\n" +
+                                 soccer_club.team_data[initial_index]['manager'] + "\n\n" +
+                                 soccer_club.team_data[initial_index]['location'] + "\n\n" +
+                                 soccer_club.team_data[initial_index]['stadium'] + "\n\n")
+
         self.club_label3.setStyleSheet('background: white;' 'padding-top: 20px;' 'padding-right: 50px;')
         self.club_label3.setAlignment(Qt.AlignLeft)
 
@@ -84,7 +85,7 @@ class FootballManager(QWidget):
         fm_hbox2.addWidget(self.club_label3)
         fm_hbox2.addStretch(1)
 
-        # Add QTableWidget # NEED  TO DISPLAY DATA WHEN SEARCHED
+        # Add QTableWidget # WILL NEED TO PUT THIS INTO A FUNCTION
         self.table1 = QTableWidget()
         self.table1.setStyleSheet('font-size: 11px;' 'alternate-background-color: rgb(176, 224, 208);'
                              'background-color: rgb(255, 255, 240);')
@@ -112,7 +113,8 @@ class FootballManager(QWidget):
                 self.table1.setHorizontalHeaderLabels(header_name)  # Set column name
         stylesheet = "::section{Background-color:rgb(248,248,255)}"
         self.table1.horizontalHeader().setStyleSheet(stylesheet)
-        self.table1.setColumnWidth(0, 160)  # Set column width
+        self.table1.setColumnWidth(0, 160)  # Set first column width
+        self.table1.setColumnWidth(1, 60)   # Set second column width
         self.table1.resizeRowsToContents()
 
         # fm_hbox3 layout
@@ -127,7 +129,6 @@ class FootballManager(QWidget):
         fm_vbox.setSpacing(5)
         self.setLayout(fm_vbox)
         self.setStyleSheet('background: white;')
-        #self.setGeometry(300, 300, 400, 600)
         self.center_window()
         self.setFixedSize(380, 600)  # Disable resizing widget window
         self.show()
